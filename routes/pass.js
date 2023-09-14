@@ -33,7 +33,7 @@ router.post('/addpass', FetchAllPass, [
             user: req.user.id,
             website: req.body.website,
             username: req.body.username,
-            password: hashedPassword
+            password: req.body.password
         })
         const savedPass = await newPass.save();
         res.send(savedPass);
