@@ -63,7 +63,7 @@ router.post('/login',
             return res.status(400).json({ errors: errors.array() });
         }
         try {
-            const { email,  } = req.body;
+            const { email, password } = req.body;
 
             // Checking that if user with the email from req.header present in DataBase
             const user = await User.findOne({ email })
@@ -85,7 +85,7 @@ router.post('/login',
             const jwtToken = jwt.sign(data, process.env.JWT_PVT_KEY)
             res.json({ jwtToken })
         } catch (error) {
-            res.status(500).send("somet")
+            res.status(500).send("Something Went Wrong")
         }
     })
 
